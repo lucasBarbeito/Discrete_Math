@@ -1,28 +1,60 @@
 package graph;
 
-import java.util.List;
+import java.util.*;
 
 // TODO: implement
 public class AdjacencyListGraphImpl<T> implements Graph<T> {
 
+    private HashMap<T,LinkedList<Edge<T>>> graph;
+
+    public AdjacencyListGraphImpl(){
+        graph = new HashMap<T, LinkedList<Edge<T>>>();
+
+    }
+
     @Override
     public void addVertex(T x) {
-        throw new UnsupportedOperationException("TODO");
+
+        graph.put(x,null);
     }
 
     @Override
     public boolean hasVertex(T v){
-        throw new UnsupportedOperationException("TODO");
+        if (graph.isEmpty()){
+            return false;
+        }else {
+            for (Map.Entry me : graph.entrySet()){
+                if (me.getKey().equals(v)) return true;
+            }
+        }
+        return false;
     }
 
     @Override
     public void removeVertex(T x) {
-        throw new UnsupportedOperationException("TODO");
+        if (!graph.isEmpty()){
+            for (Map.Entry me : graph.entrySet()) {
+                if (me.getKey().equals(x)){
+                    graph.remove(x);
+                }
+            }
+        }
     }
 
     @Override
     public void addEdge(T v, T w) {
-        throw new UnsupportedOperationException("TODO");
+        if (hasVertex(v) && hasVertex(w)) {
+            for (Map.Entry<T, LinkedList<Edge<T>>> me : graph.entrySet()) {
+                if (me.getKey().equals(v)) {
+                    me.getValue().add(new Edge<T>(v, w));
+                }
+            }
+            for (Map.Entry<T, LinkedList<Edge<T>>> me : graph.entrySet()) {
+                if (me.getKey().equals(w)) {
+                    me.getValue().add(new Edge<T>(v, w));
+                }
+            }
+        }
     }
 
     @Override
