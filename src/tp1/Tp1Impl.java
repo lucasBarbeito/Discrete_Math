@@ -24,7 +24,12 @@ public class Tp1Impl<T> implements Tp1<T> {
 
     @Override
     public boolean exercise_d(Graph<T> graph, T vertex) {
-        throw new UnsupportedOperationException("TODO");
+        if (graph.hasVertex(vertex)){
+            if (graph.getAdjacencyList(vertex).size() == 0){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
