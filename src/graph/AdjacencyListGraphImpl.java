@@ -14,8 +14,7 @@ public class AdjacencyListGraphImpl<T> implements Graph<T> {
 
     @Override
     public void addVertex(T x) {
-
-        graph.put(x,null);
+        graph.put(x,new LinkedList<Edge<T>>());
     }
 
     @Override
@@ -59,32 +58,86 @@ public class AdjacencyListGraphImpl<T> implements Graph<T> {
 
     @Override
     public void removeEdge(T v, T w) {
-        throw new UnsupportedOperationException("TODO");
+        if (hasEdge(v,w)) {
+            for (Map.Entry<T, LinkedList<Edge<T>>> me : graph.entrySet()) {
+                if (me.getKey().equals(v)) {
+                    for (int i = 0; i < me.getValue().size(); i++) {
+                        if ((me.getValue().get(i).getVertex1().equals(v) && me.getValue().get(i).getVertex2().equals(w))
+                                || (me.getValue().get(i).getVertex1().equals(w) && me.getValue().get(i).getVertex2().equals(v))) {
+                            me.getValue().remove(me.getValue().get(i));
+                        }
+                    }
+                }
+                if (me.getKey().equals(w)) {
+                    for (int i = 0; i < me.getValue().size(); i++) {
+                        if ((me.getValue().get(i).getVertex1().equals(v) && me.getValue().get(i).getVertex2().equals(w))
+                                || (me.getValue().get(i).getVertex1().equals(w) && me.getValue().get(i).getVertex2().equals(v))) {
+                            me.getValue().remove(me.getValue().get(i));
+                        }
+                    }
+                }
+            }
+        }
     }
 
     @Override
     public boolean hasEdge(T v, T w) {
-        throw new UnsupportedOperationException("TODO");
+        if (hasVertex(v) && hasVertex(w)) {
+            for (Map.Entry<T, LinkedList<Edge<T>>> me : graph.entrySet()) {
+                if (me.getKey().equals(v)) {
+                    for (int i = 0; i < me.getValue().size(); i++) {
+                        if ((me.getValue().get(i).getVertex1().equals(v) || me.getValue().get(i).getVertex1().equals(w))
+                                && (me.getValue().get(i).getVertex2().equals(v) || me.getValue().get(i).getVertex2().equals(w))) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
-
     @Override
     public int order() {
-        throw new UnsupportedOperationException("TODO");
+        return getVertexes().size();
     }
 
     @Override
     public int alpha() {
-        throw new UnsupportedOperationException("TODO");
+        int alpha = 0;
+        for (Map.Entry<T, LinkedList<Edge<T>>> me : graph.entrySet()){
+            alpha = me.getValue().size();
+        }
+        return alpha;
     }
 
     @Override
     public List<T> getVertexes() {
-        throw new UnsupportedOperationException("TODO");
+        List<T> vertexList = new ArrayList<T>();
+        if (!(graph.size() == 0)){
+            for (Map.Entry<T, LinkedList<Edge<T>>> me : graph.entrySet()){
+                vertexList.add(me.getKey());
+            }
+        }
+        return vertexList;
     }
 
     @Override
     public List<T> getAdjacencyList(T v) {
-        throw new UnsupportedOperationException("TODO");
+        List<T> vertexList = new ArrayList<T>();
+        if (!(graph.size() == 0)){
+            for (Map.Entry<T, LinkedList<Edge<T>>> me : graph.entrySet()){
+                if (me.getKey().equals(v)){
+                    for (int i = 0; i < me.getValue().size(); i++){
+                        if (me.getValue().get(i).getVertex1().equals(v)){
+                            vertexList.add(me.getValue().get(i).getVertex2());
+                        }else {
+                            vertexList.add(me.getValue().get(i).getVertex1());
+                        }
+                    }
+                }
+            }
+        }
+        return vertexList;
     }
 
 }

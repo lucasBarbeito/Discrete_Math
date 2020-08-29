@@ -8,4 +8,12 @@ public class Edge <T> {
         this.vertex1 = vertex1;
         this.vertex2 = vertex2;
     }
+
+    public T getVertex1() {
+        return vertex1;
+    }
+
+    public T getVertex2() {
+        return vertex2;
+    }
 }
