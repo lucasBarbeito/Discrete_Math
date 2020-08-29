@@ -14,7 +14,9 @@ public class AdjacencyListGraphImpl<T> implements Graph<T> {
 
     @Override
     public void addVertex(T x) {
-        graph.put(x,new LinkedList<Edge<T>>());
+        if (!hasVertex(x)){
+            graph.put(x,new LinkedList<Edge<T>>());
+        }
     }
 
     @Override
@@ -32,9 +34,11 @@ public class AdjacencyListGraphImpl<T> implements Graph<T> {
     @Override
     public void removeVertex(T x) {
         if (!graph.isEmpty()){
-            for (Map.Entry me : graph.entrySet()) {
-                if (me.getKey().equals(x)){
-                    graph.remove(x);
+            if (hasVertex(x)){
+                for (Map.Entry me : graph.entrySet()) {
+                    if (me.getKey().equals(x)){
+                        graph.remove(x);
+                    }
                 }
             }
         }
@@ -42,15 +46,20 @@ public class AdjacencyListGraphImpl<T> implements Graph<T> {
 
     @Override
     public void addEdge(T v, T w) {
-        if (hasVertex(v) && hasVertex(w)) {
-            for (Map.Entry<T, LinkedList<Edge<T>>> me : graph.entrySet()) {
-                if (me.getKey().equals(v)) {
-                    me.getValue().add(new Edge<T>(v, w));
-                }
-            }
-            for (Map.Entry<T, LinkedList<Edge<T>>> me : graph.entrySet()) {
-                if (me.getKey().equals(w)) {
-                    me.getValue().add(new Edge<T>(v, w));
+        if (!hasEdge(v,w)){
+            if (hasVertex(v) && hasVertex(w)) {
+                for (Map.Entry<T, LinkedList<Edge<T>>> me : graph.entrySet()) {
+                    if (me.getKey().equals(v) && me.getKey().equals(w)){
+                        me.getValue().add(new Edge<T>(v,w));
+                    }else {
+                        if (me.getKey().equals(v)) {
+                            me.getValue().add(new Edge<T>(v, w));
+                        }
+                        if (me.getKey().equals(w)) {
+                            me.getValue().add(new Edge<T>(v, w));
+                        }
+                    }
+
                 }
             }
         }
@@ -139,5 +148,18 @@ public class AdjacencyListGraphImpl<T> implements Graph<T> {
         }
         return vertexList;
     }
+    // mis metodos
 
+    @Override
+    public List<T> getLoops() {
+        ArrayList<T> loopsArrayList = new ArrayList<T>();
+        for (Map.Entry<T, LinkedList<Edge<T>>> me : graph.entrySet()) {
+            for (int i = 0; i < me.getValue().size(); i++){
+                if (me.getValue().get(i).getVertex1().equals(me.getValue().get(i).getVertex2())){
+                    loopsArrayList.add(me.getValue().get(i).getVertex2());
+                }
+            }
+        }
+        return loopsArrayList;
+    }
 }

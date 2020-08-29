@@ -111,4 +111,17 @@ public class EdgeArrayGraphImpl<T> implements Graph<T> {
         }
         return Vedges;
     }
+    // mis metodos
+
+    @Override
+    public List<T> getLoops() {
+        ArrayList<T> loopsArrayList = new ArrayList<T>();
+        for (int i = 0; i < edges.size(); i++){
+            if (edges.get(i).getVertex1().equals(edges.get(i).getVertex2())){
+                loopsArrayList.add(edges.get(i).getVertex1()); // no hace falta agregar el lazo porque al estar en esta lista
+                // se sabe que es un lazo.
+            }
+        }
+        return loopsArrayList;
+    }
 }

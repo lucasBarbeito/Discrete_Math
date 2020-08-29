@@ -53,4 +53,9 @@ public class AdjacencyMatrixGraphImpl<T> implements Graph<T> {
     public List<T> getAdjacencyList(T v) {
         throw new UnsupportedOperationException("TODO");
     }
+
+    @Override
+    public List<T> getLoops() {
+        throw new UnsupportedOperationException("TODO");
+    }
 }

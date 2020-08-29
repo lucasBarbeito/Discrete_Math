@@ -2,6 +2,7 @@ package tp1;
 
 import graph.Graph;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // TODO: implement
@@ -13,7 +14,7 @@ public class Tp1Impl<T> implements Tp1<T> {
 
     @Override
     public int exercise_b(Graph<T> graph) {
-        throw new UnsupportedOperationException("TODO");
+        return graph.getLoops().size();
     }
 
     @Override

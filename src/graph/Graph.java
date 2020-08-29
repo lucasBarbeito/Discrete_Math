@@ -16,4 +16,8 @@ public interface Graph<T> {
     int alpha();
 
     List<T> getAdjacencyList(T v);
+
+    // Metodos Propios
+
+    List<T> getLoops();
 }
