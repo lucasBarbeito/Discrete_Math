@@ -160,6 +160,6 @@ public class EdgeArrayGraphImpl<T> implements Graph<T> {
         }
         return edgeslist;
     }
-
+    //algo random para el push
 
 }

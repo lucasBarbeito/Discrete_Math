@@ -202,4 +202,5 @@ public class AdjacencyListGraphImpl<T> implements Graph<T> {
         return edges;
     }
 
+    //algo random para el push
 }

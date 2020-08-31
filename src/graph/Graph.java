@@ -23,4 +23,5 @@ public interface Graph<T> {
     void showGraph();
     boolean belongstoEdge(T v , Edge<T> edge);
     List<Edge<T>> getEdges();
+    //algo random para el push
 }

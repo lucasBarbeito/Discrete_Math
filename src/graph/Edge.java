@@ -22,5 +22,6 @@ public class Edge <T> {
         return  "The edge is between: " + vertex1 + " and " + vertex2;
 
     }
+    //algo random para el push
 
 }

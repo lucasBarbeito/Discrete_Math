@@ -75,4 +75,6 @@ public class Tp1Impl<T> implements Tp1<T> {
         }
         return incindentMatrix;
     }
+
+    //algo random para el push
 }
