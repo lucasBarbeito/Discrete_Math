@@ -9,7 +9,7 @@ import java.util.List;
 public class Tp1Impl<T> implements Tp1<T> {
     @Override
     public void exercise_a(Graph<T> graph) {
-        throw new UnsupportedOperationException("TODO");
+        graph.showGraph();
     }
 
     @Override
@@ -54,6 +54,25 @@ public class Tp1Impl<T> implements Tp1<T> {
 
     @Override
     public int[][] exercise_i(Graph<T> graph) {
-        throw new UnsupportedOperationException("TODO");
+        int[][] incindentMatrix = new int[graph.order()][graph.getEdges().size()];
+
+        for (int i = 0; i < incindentMatrix.length; i++) {
+            for (int j = 0; j < incindentMatrix[i].length; j++) {
+                if(graph.belongstoEdge(graph.getVertexes().get(i) , graph.getEdges().get(j))){
+                    incindentMatrix[i][j] = 1;
+                }
+                else {
+                    incindentMatrix[i][j] = 0;
+                }
+            }
+        }
+        for (int i = 0; i < incindentMatrix.length; i++) {
+
+            for (int j = 0; j < incindentMatrix[i].length; j++) {
+                System.out.print("\t" + incindentMatrix[i][j] + "");
+            }
+            System.out.println();
+        }
+        return incindentMatrix;
     }
 }

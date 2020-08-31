@@ -162,4 +162,44 @@ public class AdjacencyListGraphImpl<T> implements Graph<T> {
         }
         return loopsArrayList;
     }
+
+    @Override
+    public void showGraph() {
+
+        for (int i = 0; i < getVertexes().size(); i++) {
+            graph.keySet();
+            for (int j = 0; j < graph.get(getVertexes().get(i)).size(); j++) {
+                System.out.println(graph.get(getVertexes().get(i)).get(i).toString());
+            }
+        }
+    }
+
+    @Override
+    public boolean belongstoEdge(T v, Edge<T> edge) {
+        boolean belongs = false;
+        for (Map.Entry<T, LinkedList<Edge<T>>> me : graph.entrySet()) {
+            for (int i = 0; i < me.getValue().size(); i++) {
+                if (v.equals(me.getValue().get(i).getVertex1()) || v.equals(me.getValue().get(i).getVertex2())) {
+                    belongs = true;
+                }
+                else
+                    belongs = false;
+            }
+        }
+        return belongs;
+    }
+
+    @Override
+    public List<Edge<T>> getEdges() { //En este tengo el problema que me pone el doble de edges de lo que deberia
+        List<Edge<T>> edges = new ArrayList<>();
+
+        for (Map.Entry<T, LinkedList<Edge<T>>> me : graph.entrySet()) {
+            for (int i = 0; i < me.getValue().size(); i++) {
+                if(!edges.contains(me.getValue().get(i)))
+                edges.add(me.getValue().get(i));
+            }
+        }
+        return edges;
+    }
+
 }

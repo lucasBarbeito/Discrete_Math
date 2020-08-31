@@ -124,4 +124,42 @@ public class EdgeArrayGraphImpl<T> implements Graph<T> {
         }
         return loopsArrayList;
     }
+
+    @Override
+    public void showGraph() {
+
+        for (int i = 0; i < vertexes.size() ; i++) {
+            for (int j = 0; j < edges.size(); j++) {
+                System.out.println("\t" + "vertex: " + vertexes.get(i).toString() +
+                        " and its edge is: " + edges.get(j).toString());
+            }
+        }
+    }
+
+    @Override
+    public boolean belongstoEdge(T v, Edge<T> edge) {
+        boolean belongs = false;
+        for (int i = 0; i < edges.size(); i++) {
+            if(v.equals(edge.getVertex1()) || v.equals(edge.getVertex2())){
+                belongs = true;
+            }
+            else{
+                belongs = false;
+            }
+        }
+        return belongs;
+    }
+
+    @Override
+    public List<Edge<T>> getEdges() {
+        List<Edge<T>> edgeslist = new ArrayList<>();
+
+        for (int i = 0; i < edges.size(); i++) {
+            if(!edgeslist.contains(edges.get(i)))
+                edgeslist.add(edges.get(i));
+        }
+        return edgeslist;
+    }
+
+
 }

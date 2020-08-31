@@ -297,6 +297,6 @@ public class Tp1Test extends SkipRule {
         graph.addEdge(4, 6);
         graph.addEdge(3, 6);
 
-        assertArrayEquals(new int[][]{{1,0,0,0,0,0,0,0}, {1,1,1,0,0,0,0,0}, {0,1,0,1,1,0,0,1}, {0,0,1,1,0,1,1,0}, {0,0,0,0,1,1,0,0}, {0,0,0,0,0,0,1,1}}, tp1.exercise_i(graph));
+         assertArrayEquals(new int[][]{{1,0,0,0,0,0,0,0}, {1,1,1,0,0,0,0,0}, {0,1,0,1,1,0,0,1}, {0,0,1,1,0,1,1,0}, {0,0,0,0,1,1,0,0}, {0,0,0,0,0,0,1,1}}, tp1.exercise_i(graph));
     }
 }

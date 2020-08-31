@@ -58,4 +58,19 @@ public class AdjacencyMatrixGraphImpl<T> implements Graph<T> {
     public List<T> getLoops() {
         throw new UnsupportedOperationException("TODO");
     }
+
+    @Override
+    public void showGraph() {
+
+    }
+
+    @Override
+    public boolean belongstoEdge(T v, Edge<T> edge) {
+        return false;
+    }
+
+    @Override
+    public List<Edge<T>> getEdges() {
+        return null;
+    }
 }

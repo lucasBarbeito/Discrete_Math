@@ -16,4 +16,11 @@ public class Edge <T> {
     public T getVertex2() {
         return vertex2;
     }
+
+    @Override
+    public String toString() {
+        return  "The edge is between: " + vertex1 + " and " + vertex2;
+
+    }
+
 }

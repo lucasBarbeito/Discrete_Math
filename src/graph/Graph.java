@@ -20,4 +20,7 @@ public interface Graph<T> {
     // Metodos Propios
 
     List<T> getLoops();
+    void showGraph();
+    boolean belongstoEdge(T v , Edge<T> edge);
+    List<Edge<T>> getEdges();
 }
