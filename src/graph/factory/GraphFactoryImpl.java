@@ -11,4 +11,10 @@ public class GraphFactoryImpl<T> implements GraphFactory<T> {
             case EDGE_ARRAY -> new EdgeArrayGraphImpl<>();
         };
     }
+
+    @Override
+    public Graph<T> getGraph() {
+        return new AdjacencyListGraphImpl<>();
+    }
 }
+
