@@ -14,7 +14,7 @@ public class GraphFactoryImpl<T> implements GraphFactory<T> {
 
     @Override
     public Graph<T> getGraph() {
-        return new AdjacencyListGraphImpl<>();
+        return new EdgeArrayGraphImpl<>();
     }
 }
 
