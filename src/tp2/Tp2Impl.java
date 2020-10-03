@@ -94,11 +94,11 @@ public class Tp2Impl<T> implements Tp2<T> {
             return false;
         }else {
             for (int i = 0; i < adjacenyList.size(); i++) {
-                if (adjacenyList.get(i).equals(w) && visitedVertex.get(adjacenyList.get(i)) == false) {
+                if (adjacenyList.get(i).equals(w) && !visitedVertex.get(adjacenyList.get(i))) {
                     return true;
                 } else {
                     for (Map.Entry<T,Boolean> me : visitedVertex.entrySet()){
-                        if (adjacenyList.get(i).equals(me.getKey()) && visitedVertex.get(adjacenyList.get(i)) == false){
+                        if (adjacenyList.get(i).equals(me.getKey()) && !visitedVertex.get(adjacenyList.get(i))){
                             me.setValue(true);
                             if(excersise_a_auxiliary(visitedVertex, graph, adjacenyList.get(i), w)) {
                                 return true;
