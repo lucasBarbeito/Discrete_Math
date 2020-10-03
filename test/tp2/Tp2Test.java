@@ -128,9 +128,9 @@ public class Tp2Test extends SkipRule {
         assertTrue(tp2.exercise_a(graph, "C", "D"));
         assertTrue(tp2.exercise_a(graph, "D", "A"));
 
-        assertFalse(tp2.exercise_a(graph, "E", "A"));
-        assertFalse(tp2.exercise_a(graph, "B", "E"));
-        assertFalse(tp2.exercise_a(graph, "C", "E"));
+         assertFalse(tp2.exercise_a(graph, "E", "A"));
+         assertFalse(tp2.exercise_a(graph, "B", "E"));
+         assertFalse(tp2.exercise_a(graph, "C", "E"));
     }
 
     //    b) Dado un grafo sin lazos y un vértice v, verificar si hay un ciclo de v a v.
