@@ -504,7 +504,7 @@ public class Tp2Test extends SkipRule {
         graph_6.addEdge("A", "B");
 
         assertTrue(tp2.exercise_j(graph_1, graph_2));
-    //    assertTrue(tp2.exercise_j(graph_1, graph_3)); // ver que dice franz, si te da la razon cambiar de true a false.
+        assertTrue(tp2.exercise_j(graph_1, graph_3)); // ver que dice franz, si te da la razon cambiar de true a false.
         assertTrue(tp2.exercise_j(graph_1, graph_4));
 
         assertFalse(tp2.exercise_j(graph_1, graph_5));
