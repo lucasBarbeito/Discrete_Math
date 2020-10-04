@@ -1,5 +1,6 @@
 package tp2;
 
+import graph.Edge;
 import graph.Graph;
 
 import java.util.*;
@@ -193,7 +194,19 @@ public class Tp2Impl<T> implements Tp2<T> {
 
     @Override
     public boolean exercise_j(Graph<T> g1, Graph<T> g2) {
-        throw new UnsupportedOperationException("TODO");
+        List<T> g1Vertexes = g1.getVertexes();
+        List<Edge<T>> g1Edges = g1.getEdges();
+
+        for (int i = 0; i < g1Vertexes.size(); i++){
+            if (!g2.hasVertex(g1Vertexes.get(i))) return false;
+        }
+        for (int i = 0; i < g1Edges.size(); i++){
+            T first = g1Edges.get(i).getVertex1();
+            T secound = g1Edges.get(i).getVertex2();
+            if (!g2.hasEdge(first,secound)) return false;
+        }
+
+        return true;
     }
 
     @Override
