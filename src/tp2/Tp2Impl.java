@@ -221,7 +221,13 @@ public class Tp2Impl<T> implements Tp2<T> {
 
     @Override
     public int exercise_m(Graph<T> graph, T v) {
-        throw new UnsupportedOperationException("TODO");
+        List<T> loops = graph.getLoops();
+        for (int i = 0 ; i < loops.size() ; i ++){
+            if (loops.get(i).equals(v)){
+                return graph.getAdjacencyList(v).size() + 1;
+            }
+        }
+        return graph.getAdjacencyList(v).size();
     }
 
     @Override
