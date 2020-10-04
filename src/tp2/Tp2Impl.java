@@ -115,8 +115,21 @@ public class Tp2Impl<T> implements Tp2<T> {
     }
     @Override
     public boolean exercise_b(Graph<T> graph, T v) {
-        throw new UnsupportedOperationException("TODO");
+        if(graph.order() <= 1) return false;
+        List<T> adjacencyList = graph.getAdjacencyList(v);
+        for (int i = 0; i < adjacencyList.size(); i++){
+            List<T> adjacencyListOfAVertexAdjacentToV = graph.getAdjacencyList(adjacencyList.get(i));
+            for (int j = 0; j < adjacencyListOfAVertexAdjacentToV.size(); j++){
+                if (!adjacencyListOfAVertexAdjacentToV.get(j).equals(v) && graph.hasEdge(v,adjacencyListOfAVertexAdjacentToV.get(j))){
+                    return true;
+                }
+
+            }
+        }
+
+        return false;
     }
+
 
     @Override
     public boolean exercise_c(Graph<T> graph) {
