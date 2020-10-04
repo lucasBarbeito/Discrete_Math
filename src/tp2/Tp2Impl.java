@@ -138,7 +138,32 @@ public class Tp2Impl<T> implements Tp2<T> {
 
     @Override
     public boolean exercise_d(Graph<T> graph) {
-        throw new UnsupportedOperationException("TODO");
+        if (graph.order() == 0) return false;
+        List<T> vertexes = graph.getVertexes();
+        int counter = 1;
+        HashMap<T,Boolean> visitedVertex = new HashMap<>();
+        for (int i = 0 ; i< graph.getVertexes().size(); i++){
+            visitedVertex.put(graph.getVertexes().get(i),false);
+        }
+
+        for (int i = 0; i < vertexes.size(); i++){
+            List<T> adjacencyList = graph.getAdjacencyList(vertexes.get(i));
+            if (i == 0) {
+                visitedVertex.replace(vertexes.get(i), true);
+            }
+            for (int j = 0; j < adjacencyList.size(); j++){
+                if (!visitedVertex.get(adjacencyList.get(j))){
+                    if (adjacencyList.size() == 1 && visitedVertex.get(vertexes.get(i))){
+                        visitedVertex.replace(adjacencyList.get(j),true);
+                    }else {
+                    visitedVertex.replace(adjacencyList.get(j),true);
+                    counter++;
+                    }
+                }
+            }
+        }
+        if (counter == vertexes.size()) return true;
+        return false;
     }
 
     @Override
